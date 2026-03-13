@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div class="login-container">
+  <h2>Unlock Your Vault</h2>
+
+  <input [(ngModel)]="username" placeholder="Username" type="text">
+  <input [(ngModel)]="password" placeholder="Master Password" type="password">
+
+  <button (click)="onLogin()">Login</button>
+
+  @if (errorMessage()) {
+    <p style="color: red;">{{ errorMessage() }}</p>
+  }
+
+  <p>Don't have an account? <a href="/register">Register here</a></p>
+</div>
