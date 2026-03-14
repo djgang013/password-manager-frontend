@@ -54,6 +54,10 @@ export class LoginComponent {
       alert('Login Successful! Check your browser console to see the JWT.');
       console.log('Your JWT:', jwtToken);
 
+      const aesKey = await this.crypto.deriveAesKey(hashedMaster);
+      this.crypto.setSessionKey(aesKey);
+      this.router.navigate(['/vault']);
+
       // Later, we will navigate to the actual Vault Dashboard here
       // this.router.navigate(['/dashboard']);
 

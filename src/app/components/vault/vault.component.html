@@ -1,0 +1,58 @@
+<div class="vault-container">
+  <div class="vault-header">
+    <h2>🛡️ My Encrypted Vault</h2>
+    <button class="btn btn-danger" (click)="logout()">Lock & Logout</button>
+  </div>
+
+  <div class="vault-card new-entry-card">
+    <h3>Add New Password</h3>
+
+    <div class="input-row">
+      <input [(ngModel)]="websiteName" placeholder="Website Name (e.g. Netflix)">
+      <input [(ngModel)]="websiteUrl" placeholder="URL (e.g. netflix.com)">
+      <input [(ngModel)]="loginUsername" placeholder="Username/Email">
+    </div>
+
+    <div class="input-row action-row">
+      <input [(ngModel)]="plainPassword" type="text" placeholder="Password" class="mono-input">
+      <button class="btn btn-success" (click)="generateStrongPassword()">🎲 Generate</button>
+      <button class="btn btn-primary" (click)="addPassword()">Save to Vault</button>
+    </div>
+  </div>
+
+  <div class="vault-card table-card">
+    <h3>Saved Passwords</h3>
+    <div class="table-responsive">
+      <table class="vault-table">
+        <thead>
+        <tr>
+          <th>Website</th>
+          <th>URL</th>
+          <th>Username</th>
+          <th>Decrypted Password</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (entry of vaultEntries(); track entry.id) {
+            <tr>
+              <td>{{ entry.websiteName }}</td>
+              <td>{{ entry.websiteUrl }}</td>
+              <td>{{ entry.loginUsername }}</td>
+              <td class="password-cell">
+                <span class="mono-text">{{ entry.decryptedPassword }}</span>
+                <div class="action-buttons">
+                  <button class="btn btn-small btn-secondary" (click)="copyToClipboard(entry.decryptedPassword, $event)">📋 Copy</button>
+                  <button class="btn btn-small btn-outline-danger" (click)="deletePassword(entry.id)">🗑️ Delete</button>
+                </div>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4" class="empty-state">Your vault is completely empty.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

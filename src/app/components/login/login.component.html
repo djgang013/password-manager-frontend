@@ -1,14 +1,25 @@
-<div class="login-container">
-  <h2>Unlock Your Vault</h2>
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="vault-logo">
+      <span class="lock-icon">🔒</span>
+    </div>
+    <h2>Access Vault</h2>
+    <p class="subtitle">Enter your credentials to decrypt your data.</p>
 
-  <input [(ngModel)]="username" placeholder="Username" type="text">
-  <input [(ngModel)]="password" placeholder="Master Password" type="password">
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input id="username" [(ngModel)]="username" type="text" placeholder="e.g. zakaria_v2">
+    </div>
 
-  <button (click)="onLogin()">Login</button>
+    <div class="input-group">
+      <label for="password">Master Password</label>
+      <input id="password" [(ngModel)]="password" type="password" placeholder="••••••••••••">
+    </div>
 
-  @if (errorMessage()) {
-    <p style="color: red;">{{ errorMessage() }}</p>
-  }
+    <button class="primary-btn" (click)="onLogin()">Unlock Vault</button>
 
-  <p>Don't have an account? <a href="/register">Register here</a></p>
+    <div class="auth-footer">
+      <p>Don't have a vault yet? <a href="/register">Create one here</a></p>
+    </div>
+  </div>
 </div>

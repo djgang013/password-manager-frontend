@@ -1,6 +1,25 @@
-<div class="register-container">
-  <h2>Create Vault Account</h2>
-  <input [(ngModel)]="username" placeholder="Username" type="text">
-  <input [(ngModel)]="password" placeholder="Master Password" type="password">
-  <button (click)="onRegister()">Register</button>
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="vault-logo">
+      <span class="lock-icon">🛡️</span>
+    </div>
+    <h2>Create Your Vault</h2>
+    <p class="subtitle">Your master password will be mathematically unrecoverable. Do not lose it.</p>
+
+    <div class="input-group">
+      <label for="reg-username">Choose a Username</label>
+      <input id="reg-username" [(ngModel)]="username" type="text" placeholder="username">
+    </div>
+
+    <div class="input-group">
+      <label for="reg-password">Create Master Password</label>
+      <input id="reg-password" [(ngModel)]="password" type="password" placeholder="Make it strong!">
+    </div>
+
+    <button class="primary-btn" style="background-color: #10b981;" (click)="onRegister()">Initialize Vault</button>
+
+    <div class="auth-footer">
+      <p>Already have an account? <a href="/login">Log in here</a></p>
+    </div>
+  </div>
 </div>
